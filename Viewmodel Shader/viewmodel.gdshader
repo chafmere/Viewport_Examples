@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
-uniform float viewmodel_fov = 50.0f;
+global uniform float viewmodel_fov = 50.0f;
 
 uniform vec4 albedo : source_color = vec4(1.0f);
 uniform sampler2D texture_albedo : source_color;

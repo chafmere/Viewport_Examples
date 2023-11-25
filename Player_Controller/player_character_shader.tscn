@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dccik8ab28gnk"]
+[gd_scene load_steps=21 format=3 uid="uid://dccik8ab28gnk"]
 
 [ext_resource type="Script" path="res://Player_Controller/scripts/Player_Character/player_character.gd" id="1_0icuw"]
 [ext_resource type="Script" path="res://Player_Controller/scripts/Player_Character/HUD.gd" id="2_apb4i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Player_Controller/scripts/Weapon_State_Machine/Weapon_State_Machine.gd" id="5_2l0qx"]
 [ext_resource type="Resource" uid="uid://cc3b4mm6h864o" path="res://Player_Controller/scripts/Weapon_State_Machine/Weapon_Resources/blasterN.tres" id="6_wb3vh"]
 [ext_resource type="Shader" path="res://Viewmodel Shader/viewmodel.gdshader" id="7_gpgka"]
+[ext_resource type="Script" path="res://Viewmodel Shader/View_Models.gd" id="7_sv7k6"]
 [ext_resource type="AnimationLibrary" uid="uid://uybino34n0sj" path="res://Player_Controller/weapon_animation.res" id="8_5ye0q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73v4a"]
@@ -17,7 +18,6 @@ height = 1.7
 resource_name = "dark"
 render_priority = 0
 shader = ExtResource("7_gpgka")
-shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.432587, 0.480096, 0.526319, 1)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 1.0
@@ -32,7 +32,6 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 resource_name = "metal"
 render_priority = 0
 shader = ExtResource("7_gpgka")
-shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.904365, 0.914141, 0.944534, 1)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 1.0
@@ -47,7 +46,6 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 resource_name = "pink"
 render_priority = 0
 shader = ExtResource("7_gpgka")
-shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.998274, 0.505969, 0.673936, 1)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 1.0
@@ -62,7 +60,6 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 resource_name = "darkMetal"
 render_priority = 0
 shader = ExtResource("7_gpgka")
-shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(0.793075, 0.81829, 0.89044, 1)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 1.0
@@ -77,7 +74,6 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 resource_name = "_defaultMat"
 render_priority = 0
 shader = ExtResource("7_gpgka")
-shader_parameter/viewmodel_fov = 50.0
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 1.0
@@ -334,10 +330,11 @@ Start_Weapons = Array[String](["blasterN"])
 
 [node name="Weapons_Models" type="Node3D" parent="Camera/MainCamera/Weapons_Manager"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.54919, 0)
+script = ExtResource("7_sv7k6")
+viewmodelfov = 45.0
 
 [node name="blasterN" type="Node3D" parent="Camera/MainCamera/Weapons_Manager/Weapons_Models"]
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0.193, 1.255, -0.643)
-visible = false
 
 [node name="blasterN" type="Node3D" parent="Camera/MainCamera/Weapons_Manager/Weapons_Models/blasterN"]
 

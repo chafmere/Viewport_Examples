@@ -108,3 +108,10 @@ Melee={
 [rendering]
 
 textures/default_filters/anisotropic_filtering_level=3
+
+[shader_globals]
+
+viewmodel_fov={
+"type": "float",
+"value": 45.0
+}
