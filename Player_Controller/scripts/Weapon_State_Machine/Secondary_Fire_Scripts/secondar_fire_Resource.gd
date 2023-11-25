@@ -1,6 +1,6 @@
 extends Resource
 
-class_name  secondary_fire_resource
+class_name  SecondaryFireResource
 
 @export var LoadOverlay: bool
 @export var Overlay: Texture2D

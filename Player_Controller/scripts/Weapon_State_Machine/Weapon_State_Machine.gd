@@ -34,7 +34,7 @@ var Weapons_List = {
 }
 
 #An Array of weapon resources to make dictionary creation easier
-@export var _weapon_resources: Array[Weapon_Resource]
+@export var _weapon_resources: Array[WeaponResource]
 
 @export var Start_Weapons: Array[String]
 

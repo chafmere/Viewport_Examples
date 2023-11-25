@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var Camera = get_node("%Camera")
+@onready var subviewport_camera = $CanvasLayer/SubViewportContainer/SubViewport/Subviewport_Camera
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -37,6 +38,9 @@ func CameraLook(Movement: Vector2):
 	rotate_object_local(Vector3(0,1,0),-CameraRotation.x) # first rotate in Y
 	Camera.rotate_object_local(Vector3(1,0,0), -CameraRotation.y) # then rotate in X
 	CameraRotation.y = clamp(CameraRotation.y,-1.5,1.2)
+
+func _process(_delta):
+	subviewport_camera.set_global_transform(Camera.get_global_transform())
 
 func _physics_process(delta):
 	

@@ -1,7 +1,7 @@
 @icon("res://Player_Controller/scripts/Weapon_State_Machine/weapon_resource_icon.svg")
 extends Resource
 
-class_name Weapon_Resource
+class_name WeaponResource
 
 signal UpdateOverlay
 signal Zoom
@@ -43,7 +43,7 @@ signal Zoom
 @export_range(0,5) var y_Magnetude = .3
 @export_range(0,5) var z_Magnetude = .3
 
-@export var Secondary_Fire_Resource: secondary_fire_resource
+@export var Secondary_Fire_Resource: SecondaryFireResource
 
 var Spray_Vector
 var Base_Spray_Vector: Vector4
