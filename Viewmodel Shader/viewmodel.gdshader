@@ -29,6 +29,7 @@ void vertex() {
 	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
 	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
 	POSITION.z = mix(POSITION.z, 0, -0.999);
+	//POSITION.z = mix(POSITION.z, 0, 0.999); un comment this line for Godot 4.2 and lower
 	/* end shader magic */
 }
 
