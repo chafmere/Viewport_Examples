@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
-global uniform float viewmodel_fov = 50.0f;
+uniform float viewmodel_fov = 50.0f;
 
 uniform vec4 albedo : source_color = vec4(1.0f);
 uniform sampler2D texture_albedo : source_color;
@@ -19,21 +19,16 @@ uniform vec3 uv1_offset = vec3(0.0f);
 
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
-	
 	/* begin shader magic*/
 	float onetanfov = 1.0f / tan(0.5f * (viewmodel_fov * PI / 180.0f));
 	float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
 	// modify projection matrix
 	PROJECTION_MATRIX[1][1] = -onetanfov;
 	PROJECTION_MATRIX[0][0] = onetanfov / aspect;
-	// draws the viewmodel over everything (disable if you want dof near on viewmodel)
-	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX.xyz, 1.0);
-	POSITION.z = mix(POSITION.z, 0, -0.999); //comment out this line for Godot 4.2 and lower
-	//POSITION.z = mix(POSITION.z, 0, 0.999); //uncomment this line for Godot 4.2 and lower
-	/* end shader magic */
 }
 
 void fragment() {
+	DEPTH = FRAGCOORD.z * 2.99;
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
 	albedo_tex *= COLOR;
@@ -46,6 +41,5 @@ void fragment() {
 	NORMAL_MAP = texture(texture_normal,base_uv).rgb;
 	
 	NORMAL_MAP_DEPTH = normal_scale;
-	//vec3 emission_tex = texture(texture_emission,base_uv).rgb;
-	//EMISSION = (emission.rgb+emission_tex)*emission_energy;
+
 }
